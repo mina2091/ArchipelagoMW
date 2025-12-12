@@ -22,7 +22,6 @@ class GDWebWorld(WebWorld):
         ["Sputnik Dev Team"]
     )]
 
-
 def generate_locations():
     generated_locations = {}
     for i in range(100):
@@ -59,6 +58,14 @@ class GDWorld(World):
         self.itempool = []
         for name in items.keys():
             print(name)
+
+
+#FILL WITH OPTIONS TO SEND
+    def fill_slot_data(self):
+        return{
+            "Goal": self.options.goal.value
+        }
+
 
     def create_item(self, name: str) -> "Item":
         item_id = self.item_name_to_id[name]

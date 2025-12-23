@@ -59,14 +59,6 @@ class GDWorld(World):
         for name in items.keys():
             print(name)
 
-
-#FILL WITH OPTIONS TO SEND
-    def fill_slot_data(self):
-        return{
-            "Goal": self.options.goal.value
-        }
-
-
     def create_item(self, name: str) -> "Item":
         item_id = self.item_name_to_id[name]
         return GDItem(name, ItemClassification.progression, item_id, player=self.player)

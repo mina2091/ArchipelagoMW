@@ -1,5 +1,6 @@
 import json
 import os
+import random
 
 from Utils import visualize_regions
 from worlds.AutoWorld import World, WebWorld
@@ -65,7 +66,10 @@ class GDWorld(World):
 
     def create_items(self) -> None:
         create_gd_items(self)
-        self.multiworld.push_precollected(self.create_item("Progressive Level 1"))
+        j = 0
+        for i in range(self.options.starting_level_amount.value):
+            j += 1
+            self.multiworld.push_precollected(self.create_item(f"Progressive Level {j}"))
 
     def create_regions(self) -> None:
         create_gd_regions(self)

@@ -15,7 +15,7 @@ Insane Demon:	9
 Extreme Demon:	10
 """
 
-class ChecksPerLevel(Range):
+class ChecksPerLevel(Choice):
 	"""
 	Set the amount of checks per level.
 	Each check represents a percentage of completion in a level (5%, 10%, ..., 100%)
@@ -23,39 +23,13 @@ class ChecksPerLevel(Range):
 	Example: "5 checks per level" means you will get checks at 20%, 40%, 60%, 80%, and 100% completion.
 	"""
 	display_name = "Checks Per Level"
-	range_start = 1
-	range_end = 20
+	option_1 = 1
+	option_2 = 2
+	option_4 = 4
+	option_5 = 5
+	option_10 = 10
+	option_20 = 20
 	default = 5
-
-class OnlyOneDifficulty(Choice):
-	"""
-	Choose whether all levels should have the same fixed difficulty.
-
-	If false, you can set a custon difficulty range for levels to be chosen from.
-	"""
-	display_name = "Fixed Difficulty Range"
-	option_true = True
-	option_false = False
-	default = False
-
-class FixedDifficulty(Choice):
-	"""
-	!!Only used if only_one_difficulty is enabled!!
-
-	Select the fixed difficulty level for all levels.
-	"""
-	display_name = "Fixed Difficulty Level"
-	option_easy = 1
-	option_medium = 2
-	option_hard = 3
-	option_harder = 4
-	option_insane = 5
-	option_easy_demon = 6
-	option_medium_demon = 7
-	option_hard_demon = 8
-	option_insane_demon = 9
-	option_extreme_demon = 10
-	default = 6
 
 class MinDiff(Choice):
 	"""
@@ -72,7 +46,7 @@ class MinDiff(Choice):
 	option_hard_demon = 8
 	option_insane_demon = 9
 	option_extreme_demon = 10
-	default = 5
+	default = 6
 
 class MaxDiff(Choice):
 	"""
@@ -89,16 +63,16 @@ class MaxDiff(Choice):
 	option_hard_demon = 8
 	option_insane_demon = 9
 	option_extreme_demon = 10
-	default = 7
+	default = 6
 
 class StartingLevelAmount(Range):
 	"""
 	Set the amount of levels that you will start with.
 	"""
 	display_name = "Starting Level Amount"
-	range_start = 0
+	range_start = 1
 	range_end = 100
-	default = 0
+	default = 4
 
 class LevelAmount(Range):
 	"""
@@ -123,8 +97,6 @@ class GoalAmount(Range):
 @dataclass
 class GDOptions(PerGameCommonOptions):
 	checks_per_level: ChecksPerLevel
-	only_one_difficulty: OnlyOneDifficulty
-	fixed_difficulty: FixedDifficulty
 	min_diff: MinDiff
 	max_diff: MaxDiff
 	starting_level_amount: StartingLevelAmount

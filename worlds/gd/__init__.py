@@ -54,6 +54,16 @@ class GDWorld(World):
     item_name_to_id = items
     location_name_to_id = locations
 
+    def fill_slot_data(self):
+        return {
+            "goal_amount": self.options.goal_amount.value,
+            "starting_level_amount": self.options.starting_level_amount.value,
+            "level_amount": self.options.level_amount.value,
+            "checks_per_level": self.options.checks_per_level.value,
+            "min_diff": self.options.min_diff.value,
+            "max_diff": self.options.max_diff.value
+        }
+
     def __init__(self, multiworld: MultiWorld, player: int):
         super().__init__(multiworld, player)
         self.itempool = []
